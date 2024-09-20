@@ -1,8 +1,8 @@
-const { Client, PrivateKey, TokenCreateTransaction } = require('@hashgraph/sdk');
+//const { Client, PrivateKey, TokenCreateTransaction } = require('@hashgraph/sdk');
 const postgre = require('../database'); // Conexión a la base de datos
 
 
-const client = Client.forTestnet().setOperator('0.0.4866131', '302e020100300506032b657004220420a5b84480a6aabb251319dce9008fc6ee568f238ee9544c97525983c6767bc495');
+//const client = Client.forTestnet().setOperator('0.0.4866131', '302e020100300506032b657004220420a5b84480a6aabb251319dce9008fc6ee568f238ee9544c97525983c6767bc495');
 
 const hederaController = {
 createToken: async (req, res) => {
