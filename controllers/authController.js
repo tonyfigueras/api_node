@@ -47,10 +47,10 @@ const authController = {
       }
 
       // Generar el token JWT
-      const token = jwt.sign({ username: user.username }, 'tu_clave_secreta', { expiresIn: '1h' });
+      const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
       // Enviar el token como respuesta
-      res.json({ token });
+      res.json({msg: 'login exitoso',  token });
     } catch (error) {
       console.error('Error en el login:', error);
       res.status(500).json({ msg: 'Error en el login', error: error.message });
