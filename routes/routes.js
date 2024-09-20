@@ -2,9 +2,10 @@
 const express = require("express")
 const router = express.Router()
 //import express from "express";  //const express = require('express');
-import { login, register, logout } from "../controller/authController.js"; //const { login, register, logout } = require('../controllers/authController');
-import createToken from('../controllers/hederaController.js');
-import authMiddleware from('../middleware/authMiddleware.js');
+//import { login, register, logout } from "../controller/authController.js"; 
+const { login, register, logout } = require('../controllers/authController');
+const createToken = require('../controllers/hederaController.js');
+const authMiddleware = require('../middleware/authMiddleware.js');
 //const router = express.Router() //const router = express.Router();
 
 // Rutas de autenticación
