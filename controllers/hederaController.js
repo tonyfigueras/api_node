@@ -6,32 +6,18 @@ const client = Client.forTestnet().setOperator('0.0.4866131', '302e0201003005060
 
 const hederaController = {
 createToken: async (req, res) => {
-  const { name, symbol, initialSupply } = req.body;
-  const userId = req.user.id;  // Obtener el user_id del token JWT
-
   try {
-    // Crear el token en Hedera
-    const transaction = await new TokenCreateTransaction()
-      .setTokenName(name)
-      .setTokenSymbol(symbol)
-      .setInitialSupply(initialSupply)
-      .setTreasuryAccountId(client.operatorAccountId)
-      .setAdminKey(PrivateKey.fromString(client.operatorPrivateKey))
-      .setFreezeDefault(false)
-      .execute(client);
+    const { name, price } = req.body
 
-    const receipt = await transaction.getReceipt(client);
-    const tokenId = receipt.tokenId.toString();
+    const sql = 'INSERT INTO books(name, price) VALUES($1, $2) RETURNING *'
 
-    // Guardar el token en la base de datos asociado al usuario
-    const sql = 'INSERT INTO tokens(token_id, name, symbol, initial_supply, user_id) VALUES($1, $2, $3, $4, $5) RETURNING *';
-    const { rows } = await postgre.query(sql, [tokenId, name, symbol, initialSupply, userId]);
+    const { rows } = await postgre.query(sql, [name, price])
 
-    res.json({ msg: 'Token creado exitosamente', token: rows[0] });
-  } catch (error) {
-    console.error('Error creando token:', error);
-    res.status(500).json({ error: 'Error creando token en Hedera' });
-  }
+    res.json({msg: "OK", data: rows[0]})
+
+} catch (error) {
+    res.json({msg: error.msg})
+}
 },
 
 listTokens: async (req, res) => {
