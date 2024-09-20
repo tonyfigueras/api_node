@@ -6,7 +6,7 @@ const hederaController = require('../controllers/hederaController');
 const authMiddleware = require('../middleware/authMiddleware');
 router.post('/login', authController.login);
 router.post('/register', authController.register);
-router.post('/logout', authMiddleware, authController.logout);
+//router.post('/logout', authMiddleware, authController.logout);
 
 router.post('/create_token_hedera', hederaController.createToken);
 router.get('/list-tokens', hederaController.listTokens);
