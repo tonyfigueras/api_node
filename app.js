@@ -1,12 +1,14 @@
-import express from "express"   //const express = require('express');
+const express = require('express');
 
+const app = express();
+
+require('dotenv').config();
+app.use(express.json())
 //import db from "./database/db.js"
-import apiRoutes from './routes/routes.js'  //const apiRoutes = require('./routes/api');
+const apiRoutes  = require( './routes/routes.js');
+ //const app = express();
 
-const app = express() //const app = express();
-
-require('dotenv').config()
-app.use(express.json())  //app.use(express.json());
+  //app.use(express.json());
 app.use('/api',apiRoutes)  //app.use('/api', apiRoutes);
 
 
