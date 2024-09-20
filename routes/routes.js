@@ -1,16 +1,15 @@
 
 const express = require("express")
 const router = express.Router()
-//const bookController = require('../controllers/book.controller')
-//const { login, register, logout } = require('../controllers/authController');
-const authController = require('../controllers/hederaController.js');
-const authMiddleware = require('../middleware/authMiddleware.js');
-router.post('/login', authController);
-router.post('/register', authController);
+const authController = require('../controllers/authController');
+//const hederaController = require('../controllers/hederaController');
+const authMiddleware = require('../middleware/authMiddleware');
+router.post('/login', authController.login);
+router.post('/register', authController.register);
 router.post('/logout', authMiddleware, authController);
 
-router.post('/create-token-hedera', authMiddleware, createToken);
-router.get('/list-tokens', authMiddleware, listTokens);
+//router.post('/create-token-hedera', authMiddleware, createToken);
+//router.get('/list-tokens', authMiddleware, listTokens);
 
 
 module.exports = router;
