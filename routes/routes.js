@@ -8,8 +8,8 @@ router.post('/login', authController.login);
 router.post('/register', authController.register);
 router.post('/logout', authMiddleware, authController.logout);
 
-router.post('/create-token-hedera', authMiddleware, hederaController.createToken);
-router.get('/list-tokens', authMiddleware, hederaController.listTokens);
+router.post('/create-token-hedera', hederaController.createToken);
+router.get('/list-tokens', hederaController.listTokens);
 
 
 module.exports = router;
