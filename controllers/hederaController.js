@@ -6,6 +6,7 @@ const client = Client.forTestnet().setOperator('0.0.4866131', '302e0201003005060
 
 const hederaController = {
 createToken: async (req, res) => {
+  return 200;
   const { name, symbol, initialSupply } = req.body;
   const userId = req.user.id;  // Obtener el user_id del token JWT
 
