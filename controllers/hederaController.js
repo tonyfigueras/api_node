@@ -1,6 +1,6 @@
 const { Client, PrivateKey, TokenCreateTransaction, Hbar } = require('@hashgraph/sdk');
 
-const client = Client.forTestnet().setOperator('your-account-id', 'your-private-key');
+const client = Client.forTestnet().setOperator('0.0.4866131', '302e020100300506032b657004220420a5b84480a6aabb251319dce9008fc6ee568f238ee9544c97525983c6767bc495');
 
 const createToken = async (req, res) => {
   const { name, symbol, initialSupply } = req.body;
