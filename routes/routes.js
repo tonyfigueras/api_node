@@ -8,7 +8,7 @@ router.post('/login', authController.login);
 router.post('/register', authController.register);
 //router.post('/logout', authMiddleware, authController.logout);
 
-router.post('/', hederaController.createToken);
+router.post('/create', hederaController.createToken);
 router.get('/list-tokens', hederaController.listTokens);
 
 
